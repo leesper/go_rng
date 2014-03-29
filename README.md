@@ -29,50 +29,64 @@ TYPES
 type UniformGenerator struct {
     // contains filtered or unexported fields
 }
-    UniformGenerator is a random number generator for uniform
-    distribution. The zero value is invalid, use NewUniformGenerator to
-    create a generator
+    
+UniformGenerator is a random number generator for uniform
+distribution. The zero value is invalid, use NewUniformGenerator to
+create a generator
 
 func NewUniformGenerator(seed int64) *UniformGenerator
-    NewUniformGenerator returns a uniform-distribution generator it is
-    recommended using time.Now().UnixNano() as the seed, for example: urng
-    := rng.NewUniformGenerator(time.Now().UnixNano())
+    
+NewUniformGenerator returns a uniform-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: urng
+:= rng.NewUniformGenerator(time.Now().UnixNano())
 
 func (ung UniformGenerator) Float32() float32
-    Float32 returns a random float32 in [0.0, 1.0)
+
+Float32 returns a random float32 in [0.0, 1.0)
 
 func (ung UniformGenerator) Float32Range(a, b float32) float32
-    Float32Range returns a random float32 in [a, b)
+    
+Float32Range returns a random float32 in [a, b)
 
 func (ung UniformGenerator) Float32n(n float32) float32
-    Float32n returns a random float32 in [0.0, n)
+    
+Float32n returns a random float32 in [0.0, n)
 
 func (ung UniformGenerator) Float64() float64
-    Float64 returns a random float64 in [0.0, 1.0)
+    
+Float64 returns a random float64 in [0.0, 1.0)
 
 func (ung UniformGenerator) Float64Range(a, b float64) float64
-    Float32Range returns a random float32 in [a, b)
+    
+Float32Range returns a random float32 in [a, b)
 
 func (ung UniformGenerator) Float64n(n float64) float64
-    Float64n returns a random float64 in [0.0, n)
+    
+Float64n returns a random float64 in [0.0, n)
 
 func (ung UniformGenerator) Int32() int32
-    Int32 returns a random uint32
+    
+Int32 returns a random uint32
 
 func (ung UniformGenerator) Int32Range(a, b int32) int32
-    Int32Range returns a random uint32 in [a, b)
+    
+Int32Range returns a random uint32 in [a, b)
 
 func (ung UniformGenerator) Int32n(n int32) int32
-    Int32n returns a random uint32 in [0, n)
+    
+Int32n returns a random uint32 in [0, n)
 
 func (ung UniformGenerator) Int64() int64
-    Int64 returns a random uint64
+    
+Int64 returns a random uint64
 
 func (ung UniformGenerator) Int64Range(a, b int64) int64
-    Int64Range returns a random uint64 in [a, b)
+    
+Int64Range returns a random uint64 in [a, b)
 
 func (ung UniformGenerator) Int64n(n int64) int64
-    Int64n returns a random uint64 in [0, n)
+    
+Int64n returns a random uint64 in [0, n)
 
 bernoulli
 binomial
