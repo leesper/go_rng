@@ -17,7 +17,7 @@ type BernoulliGenerator struct {
 
 // NewBernoulliGenerator returns a bernoulli-distribution generator
 // it is recommended using time.Now().UnixNano() as the seed, for example:
-// urng := rng.NewBernoulliGenerator(time.Now().UnixNano())
+// beng := rng.NewBernoulliGenerator(time.Now().UnixNano())
 func NewBernoulliGenerator(seed int64) *BernoulliGenerator {
 	urng := NewUniformGenerator(seed)
 	return &BernoulliGenerator{ urng }

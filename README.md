@@ -161,11 +161,24 @@ recommended using time.Now().UnixNano() as the seed, for example: prng
 
 Poisson returns a random number of possion distribution
 
+Exponential Distribution
+
+1) struct ExpGenerator
+
+ExpGenerator is a random number generator for exponential distribution.
+The zero value is invalid, use NewExpGenerator to create a generator
+
+2) func NewExpGenerator(seed int64) *ExpGenerator
+
+NewExpGenerator returns a exponential-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: erng
+:= rng.NewExpGenerator(time.Now().UnixNano())
+
+3) func (erng ExpGenerator) Exp(lambda float64) float64
+
+Exp returns a random number of exponential distribution
 
 TODO:
-
-exponential
-
 gamma
 
 normal

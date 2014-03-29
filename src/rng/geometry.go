@@ -18,7 +18,7 @@ type GeometricGenerator struct {
 
 // NewGeometricGenerator returns a geometric-distribution generator
 // it is recommended using time.Now().UnixNano() as the seed, for example:
-// urng := rng.NewGeometricGenerator(time.Now().UnixNano())
+// grng := rng.NewGeometricGenerator(time.Now().UnixNano())
 func NewGeometricGenerator(seed int64) *GeometricGenerator {
 	urng := NewUniformGenerator(seed)
 	return &GeometricGenerator{ urng }

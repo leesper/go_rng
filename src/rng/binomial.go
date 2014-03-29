@@ -17,7 +17,7 @@ type BinomialGenerator struct {
 
 // NewBinomialGenerator returns a binomial-distribution generator
 // it is recommended using time.Now().UnixNano() as the seed, for example:
-// urng := rng.NewBinomialGenerator(time.Now().UnixNano())
+// bing := rng.NewBinomialGenerator(time.Now().UnixNano())
 func NewBinomialGenerator(seed int64) *BinomialGenerator {
 	urng := NewUniformGenerator(seed)
 	return &BinomialGenerator{ urng }

@@ -9,6 +9,30 @@ import (
 	"strings"
 )
 
+func TestExpGenerator(t *testing.T) {
+	fmt.Println("=====Testing for ExpGenerator begin=====")
+	erng := rng.NewExpGenerator(time.Now().UnixNano())
+	fmt.Println("Possion(1): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(erng.Exp(1) * 2)]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%.1f-%.1f:\t%s\n", float32(key) / 2.0, float32(key + 1) / 2.0, 
+			strings.Repeat("*", hist[key] / 100))
+	}
+	
+	fmt.Println("=====Testing for ExpGenerator end=====")
+	fmt.Println()
+}
+
 func TestPoissonGenerator(t *testing.T) {
 	fmt.Println("=====Testing for PossionGenerator begin=====")
 	prng := rng.NewPoissonGenerator(time.Now().UnixNano())
