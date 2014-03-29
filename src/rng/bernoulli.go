@@ -1,3 +1,8 @@
+// Package rng implements a series of pseudo-random number generator 
+// based on a variety of common probability distributions
+// Author: Leesper
+// Email: pascal7718@gmail.com 394683518@qq.com
+
 package rng
 
 import (
@@ -18,15 +23,15 @@ func NewBernoulliGenerator(seed int64) *BernoulliGenerator {
 	return &BernoulliGenerator{ urng }
 }
 
-// bernoulli returns a bool, which is true with probablity 0.5
+// Bernoulli returns a bool, which is true with probablity 0.5
 func (beng BernoulliGenerator) Bernoulli() bool {
 	return beng.Bernoulli_P(0.5)
 }
 
-// bernoulli_P returns a bool, which is true with probablity p
+// Bernoulli_P returns a bool, which is true with probablity p
 func (beng BernoulliGenerator) Bernoulli_P(p float32) bool {
 	if !(0.0 <= p && p <= 1.0) {
-		panic(fmt.Sprintf("Invalid probability", p))
+		panic(fmt.Sprintf("Invalid probability: ", p))
 	}
 	return beng.uniform.Float32() < p
 }

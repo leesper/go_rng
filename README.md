@@ -108,9 +108,25 @@ bernoulli returns a bool, which is true with probablity 0.5
 
 bernoulli_P returns a bool, which is true with probablity p
 
-TODO:
+3. binomial distribution
 
-binomial
+1) struct BinomialGenerator
+
+BinomialGenerator is a random number generator for binomial
+distribution. The zero value is invalid, use NewBinomialGenerator to
+create a generator
+
+2) func NewBinomialGenerator(seed int64) *BinomialGenerator
+
+NewBinomialGenerator returns a binomial-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: urng
+:= rng.NewBinomialGenerator(time.Now().UnixNano())
+
+3) func (bing BinomialGenerator) Binomial(n int64, p float32) int64
+
+Binomial returns a random number X ~ binomial(n, p)
+
+TODO:
 
 geometric
 

@@ -3,10 +3,54 @@ package rng_test
 import (
 	"rng"
 	"fmt"
+	"sort"
 	"time"
 	"testing"
 	"strings"
 )
+
+func SortInt64Slice(slice []int64) {
+	sort.Sort(int64slice(slice))
+}
+
+type int64slice []int64
+
+func (slice int64slice) Len() int {
+	return len(slice)
+}
+
+func (slice int64slice) Less(i, j int) bool {
+	return slice[i] < slice[j]
+}
+
+func (slice int64slice) Swap(i, j int) {
+	slice[i], slice[j] = slice[j], slice[i]
+}
+
+func TestBinomialGenerator(t *testing.T) {
+	fmt.Println("=====Testing for BinomialGenerator begin=====")
+	bing := rng.NewBinomialGenerator(time.Now().UnixNano())
+	
+	fmt.Println("Binomial(10^6, 0.02) = ", bing.Binomial(1000000, 0.02))
+	fmt.Println("X ~ Binomial(4, 0.5): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[bing.Binomial(4, 0.5)]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 500))
+	}
+	
+	fmt.Println("=====Testing for BinomialGenerator end=====")
+	fmt.Println()
+}
 
 func TestBernoulliGenerator(t *testing.T) {
 	fmt.Println("=====Testing for BernoulliGenerator begin=====")
