@@ -3,6 +3,7 @@ go_rng --- A pseudo-random number generator written in Golang
 Author: Leesper
 
 Inspired by:
+
 1. StdRandom.java --- "Algorithms 4ed" by Prof Robert Sedgewick http://introcs.cs.princeton.edu/java/stdlib/StdRandom.java.html
 
 2. Chapter 7 Random Numbers --- "Numerical Recipes" by William.H http://www.nr.com/
@@ -18,7 +19,9 @@ Inspired by:
 7. Inverse transform sampling --- http://en.wikipedia.org/wiki/Inverse_transform_sampling
 
 Supported Distributions and Functionalities:
+
 1. uniform distribution
+
 package rng
     import "rng"
 TYPES
