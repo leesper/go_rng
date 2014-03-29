@@ -24,7 +24,7 @@ func NewBinomialGenerator(seed int64) *BinomialGenerator {
 }
 
 // Binomial returns a random number X ~ binomial(n, p)
-func (bing BinomialGenerator) Binomial(n int64, p float32) int64 {
+func (bing BinomialGenerator) Binomial(n int64, p float64) int64 {
 	if !(0.0 <= p && p <= 1.0) {
 		panic(fmt.Sprintf("Invalid probability p: ", p))
 	}
@@ -59,7 +59,7 @@ func (bing BinomialGenerator) Binomial(n int64, p float32) int64 {
 	return result
 }
 
-func (bing BinomialGenerator) binomial(n int64, p float32) int64 {
+func (bing BinomialGenerator) binomial(n int64, p float64) int64 {
 	if !(0.0 <= p && p <= 1.0) {
 		panic(fmt.Sprintf("Invalid probability p: %.2f", p))
 	}
@@ -68,7 +68,7 @@ func (bing BinomialGenerator) binomial(n int64, p float32) int64 {
 	}
 	var i, result int64
 	for i = 0; i < n; i++ {
-		if bing.uniform.Float32() < p {
+		if bing.uniform.Float64() < p {
 			result++
 		}
 	}

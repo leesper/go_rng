@@ -126,9 +126,25 @@ recommended using time.Now().UnixNano() as the seed, for example: urng
 
 Binomial returns a random number X ~ binomial(n, p)
 
-TODO:
+Geometric Distribution
 
-geometric
+1) struct GeometricGenerator
+
+GeometricGenerator is a random number generator for geometric
+distribution. The zero value is invalid, use NewGeometryGenerator to
+create a generator
+
+2) func NewGeometricGenerator(seed int64) *GeometricGenerator
+
+NewGeometricGenerator returns a geometric-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: urng
+:= rng.NewGeometricGenerator(time.Now().UnixNano())
+
+3) func (grng GeometricGenerator) Geometric(p float64) int64
+
+Geometric returns a random number X ~ binomial(n, p)
+
+TODO:
 
 poisson
 

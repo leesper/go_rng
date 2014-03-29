@@ -9,22 +9,28 @@ import (
 	"strings"
 )
 
-func SortInt64Slice(slice []int64) {
-	sort.Sort(int64slice(slice))
-}
-
-type int64slice []int64
-
-func (slice int64slice) Len() int {
-	return len(slice)
-}
-
-func (slice int64slice) Less(i, j int) bool {
-	return slice[i] < slice[j]
-}
-
-func (slice int64slice) Swap(i, j int) {
-	slice[i], slice[j] = slice[j], slice[i]
+func TestGeometryGenerator(t *testing.T) {
+	fmt.Println("=====Testing for GeometryGenerator begin=====")
+	
+	grng := rng.NewGeometricGenerator(time.Now().UnixNano())
+	fmt.Println("Geometry(0.2): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[grng.Geometric(0.2)]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 100))
+	}
+	
+	fmt.Println("=====Testing for GeometryGenerator end=====")
+	fmt.Println()
 }
 
 func TestBinomialGenerator(t *testing.T) {
@@ -33,7 +39,7 @@ func TestBinomialGenerator(t *testing.T) {
 	
 	fmt.Println("Binomial(10^6, 0.02) = ", bing.Binomial(1000000, 0.02))
 	var n int64 = 6
-	var p float32 = 0.5
+	var p float64 = 0.5
 	fmt.Printf("X ~ Binomial(%d, %.2f): \n", n, p)
 	hist := map[int64]int{}
 	for i := 0; i < 10000; i++ {
@@ -47,7 +53,7 @@ func TestBinomialGenerator(t *testing.T) {
 	SortInt64Slice(keys)
 	
 	for _, key := range keys {
-		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 500))
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 100))
 	}
 	
 	fmt.Println("=====Testing for BinomialGenerator end=====")
@@ -121,4 +127,23 @@ func TestUniformGenerator(t *testing.T) {
 		urng.Float32Range(45.485, 999.458), urng.Float64Range(45.485, 999.458))
 		
 	fmt.Println("=====Testing for UniformGenerator end=====")
+}
+
+
+func SortInt64Slice(slice []int64) {
+	sort.Sort(int64slice(slice))
+}
+
+type int64slice []int64
+
+func (slice int64slice) Len() int {
+	return len(slice)
+}
+
+func (slice int64slice) Less(i, j int) bool {
+	return slice[i] < slice[j]
+}
+
+func (slice int64slice) Swap(i, j int) {
+	slice[i], slice[j] = slice[j], slice[i]
 }
