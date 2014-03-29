@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestPoissonGenerator(t *testing.T) {
+	fmt.Println("=====Testing for PossionGenerator begin=====")
+	prng := rng.NewPoissonGenerator(time.Now().UnixNano())
+	fmt.Println("Possion(4): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[prng.Possion(4)]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 100))
+	}
+	
+	fmt.Println("=====Testing for PossionGenerator end=====")
+	fmt.Println()
+}
+
 func TestGeometryGenerator(t *testing.T) {
 	fmt.Println("=====Testing for GeometryGenerator begin=====")
 	

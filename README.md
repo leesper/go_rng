@@ -144,9 +144,25 @@ recommended using time.Now().UnixNano() as the seed, for example: urng
 
 Geometric returns a random number X ~ binomial(n, p)
 
-TODO:
+Poisson Distribution
 
-poisson
+1) struct PoissonGenerator struct
+
+PoissonGenerator is a random number generator for possion distribution.
+The zero value is invalid, use NewPoissonGenerator to create a generator
+
+2) func NewPoissonGenerator(seed int64) *PoissonGenerator
+
+NewPoissonGenerator returns a possion-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: prng
+:= rng.NewPoissonGenerator(time.Now().UnixNano())
+
+3) func (prng PoissonGenerator) Possion(lambda float64) int64
+
+Poisson returns a random number of possion distribution
+
+
+TODO:
 
 exponential
 

@@ -3,8 +3,6 @@
 // Author: Leesper
 // Email: pascal7718@gmail.com 394683518@qq.com
 
-// inspired by Wikipedia - Geometric Distribution
-
 package rng
 
 import (
