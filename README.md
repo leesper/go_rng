@@ -20,10 +20,11 @@ Inspired by:
 
 Supported Distributions and Functionalities:
 
-1. uniform distribution
-
 package rng
-    import "rng"
+    
+import "rng"
+
+1. uniform distribution
 
 1) struct UniformGenerator 
 
@@ -85,9 +86,29 @@ Int64Range returns a random uint64 in [a, b)
     
 Int64n returns a random uint64 in [0, n)
 
-TODO:
+2. bernoulli distribution
 
-bernoulli
+1) struct BernoulliGenerator
+
+UniformGenerator is a random number generator for uniform distribution.
+The zero value is invalid, use NewBernoulliGenerator to create a
+generator
+
+2) func NewBernoulliGenerator(seed int64) *BernoulliGenerator
+
+NewBernoulliGenerator returns a bernoulli-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: urng
+:= rng.NewBernoulliGenerator(time.Now().UnixNano())
+
+3) func (beng BernoulliGenerator) Bernoulli() bool
+
+bernoulli returns a bool, which is true with probablity 0.5
+
+4) func (beng BernoulliGenerator) Bernoulli_P(p float32) bool
+
+bernoulli_P returns a bool, which is true with probablity p
+
+TODO:
 
 binomial
 

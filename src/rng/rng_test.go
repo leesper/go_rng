@@ -5,7 +5,23 @@ import (
 	"fmt"
 	"time"
 	"testing"
+	"strings"
 )
+
+func TestBernoulliGenerator(t *testing.T) {
+	fmt.Println("=====Testing for BernoulliGenerator begin=====")
+	beng := rng.NewBernoulliGenerator(time.Now().UnixNano())
+	hist := map[bool]int{}
+	for i := 0; i < 10000; i++ {
+		hist[beng.Bernoulli_P(0.25)]++
+	}
+	for k, v := range hist {
+		fmt.Printf("%t:\t%s\n", k, strings.Repeat("*", v / 500))
+	}
+	fmt.Printf("ratio: %.2f\n", float32(hist[true]) / float32(hist[true] + hist[false]))
+	fmt.Println("=====Testing for BernoulliGenerator end=====")
+	fmt.Println()
+}
 
 func TestUniformGenerator(t *testing.T) {
 	urng := rng.NewUniformGenerator(time.Now().UnixNano())
