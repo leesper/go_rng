@@ -178,14 +178,34 @@ recommended using time.Now().UnixNano() as the seed, for example: erng
 
 Exp returns a random number of exponential distribution
 
+Cauchy Distribution
+
+1) struct CauchyGenerator
+
+CauchyGenerator is a random number generator for cauchy distribution.
+The zero value is invalid, use NewCauchyGenerator to create a generator
+
+2) func NewCauchyGenerator(seed int64) *CauchyGenerator
+
+NewCauchyGenerator returns a cauchy-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: crng
+:= rng.NewCauchyGenerator(time.Now().UnixNano())
+
+3) func (crng CauchyGenerator) Cauchy(x0, gamma float64) float64
+
+Cauchy returns a random number of cauchy distribution
+
+4) func (crng CauchyGenerator) StandardCauchy() float64
+
+StandardCauchy() returns a random number of standard cauchy distribution
+(x0 = 0.0, gamma = 1.0)
+
 TODO:
 gamma
 
 normal
 
 chi squared
-
-cauchy
 
 pareto
 
