@@ -32,10 +32,12 @@ func TestBinomialGenerator(t *testing.T) {
 	bing := rng.NewBinomialGenerator(time.Now().UnixNano())
 	
 	fmt.Println("Binomial(10^6, 0.02) = ", bing.Binomial(1000000, 0.02))
-	fmt.Println("X ~ Binomial(4, 0.5): ")
+	var n int64 = 6
+	var p float32 = 0.5
+	fmt.Printf("X ~ Binomial(%d, %.2f): \n", n, p)
 	hist := map[int64]int{}
 	for i := 0; i < 10000; i++ {
-		hist[bing.Binomial(4, 0.5)]++
+		hist[bing.Binomial(n, p)]++
 	}
 	
 	keys := []int64{}

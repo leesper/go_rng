@@ -31,7 +31,7 @@ func (beng BernoulliGenerator) Bernoulli() bool {
 // Bernoulli_P returns a bool, which is true with probablity p
 func (beng BernoulliGenerator) Bernoulli_P(p float32) bool {
 	if !(0.0 <= p && p <= 1.0) {
-		panic(fmt.Sprintf("Invalid probability: ", p))
+		panic(fmt.Sprintf("Invalid probability: %.2f", p))
 	}
 	return beng.uniform.Float32() < p
 }

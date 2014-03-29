@@ -24,7 +24,7 @@ package rng
     
 import "rng"
 
-1. uniform distribution
+Uniform Distribution
 
 1) struct UniformGenerator 
 
@@ -86,7 +86,7 @@ Int64Range returns a random uint64 in [a, b)
     
 Int64n returns a random uint64 in [0, n)
 
-2. bernoulli distribution
+Bernoulli Distribution
 
 1) struct BernoulliGenerator
 
@@ -108,7 +108,7 @@ bernoulli returns a bool, which is true with probablity 0.5
 
 bernoulli_P returns a bool, which is true with probablity p
 
-3. binomial distribution
+Binomial Distribution
 
 1) struct BinomialGenerator
 
