@@ -259,17 +259,29 @@ recommended using time.Now().UnixNano() as the seed, for example: crng
 
 Pareto returns a random number of type I pareto distribution (alpha > 0,0)
 
+Weibull Distribution
+
+1) struct WeibullGenerator
+
+WeibullGenerator is a random number generator for type weibull
+distribution. The zero value is invalid, use NewWeibullGenerator to
+create a generator
+
+2) func NewWeibullGenerator(seed int64) *WeibullGenerator
+
+NewWeibullGenerator returns a weibull-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: wrng
+:= rng.NewWeibullGenerator(time.Now().UnixNano())
+
+3) func (wrng WeibullGenerator) Weibull(lambda, k float64) float64
+
+Weibull returns a random number of weibull distribution (lambda > 0.0
+and k > 0.0)
 
 TODO:
 gamma
 
 chi squared
-
-pareto
-
-weibull
-
-negative binomial
 
 extreme value
 
