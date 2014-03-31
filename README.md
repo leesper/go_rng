@@ -200,6 +200,24 @@ Cauchy returns a random number of cauchy distribution
 StandardCauchy() returns a random number of standard cauchy distribution
 (x0 = 0.0, gamma = 1.0)
 
+Logistic Distribution
+
+1) struct LogisticGenerator
+
+LogisticGenerator is a random number generator for cauchy distribution.
+The zero value is invalid, use NewLogisticGenerator to create a
+generator
+
+2) func NewLogisticGenerator(seed int64) *LogisticGenerator
+
+NewLogisticGenerator returns a logistic-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: lrng
+:= rng.NewLogisticGenerator(time.Now().UnixNano())
+
+3) func (lrng LogisticGenerator) Logistic(mu, s float64) float64
+
+Logistic returns a random number of logistic distribution
+
 TODO:
 gamma
 
@@ -208,8 +226,6 @@ normal
 chi squared
 
 pareto
-
-logistic
 
 weibull
 

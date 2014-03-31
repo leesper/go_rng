@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestLogisticGenerator(t *testing.T) {
+	fmt.Println("=====Testing for LogisticGenerator begin=====")
+	lrng := rng.NewLogisticGenerator(time.Now().UnixNano())
+	fmt.Println("Logistic(6.0, 2.0): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(lrng.Logistic(6.0, 2.0))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 100))
+	}
+	
+	fmt.Println("=====Testing for LogisticGenerator end=====")
+	fmt.Println()
+}
+
 func TestCauchyGenerator(t *testing.T) {
 	fmt.Println("=====Testing for CauchyGenerator begin=====")
 	crng := rng.NewCauchyGenerator(time.Now().UnixNano())
