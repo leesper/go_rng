@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestGaussianGenerator(t *testing.T) {
+	fmt.Println("=====Testing for GaussianGenerator begin=====")
+	grng := rng.NewGaussianGenerator(time.Now().UnixNano())
+	fmt.Println("Gaussian(5.0, 2.0): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(grng.Gaussian(5.0, 2.0))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for GaussianGenerator end=====")
+	fmt.Println()
+}
+
 func TestLogisticGenerator(t *testing.T) {
 	fmt.Println("=====Testing for LogisticGenerator begin=====")
 	lrng := rng.NewLogisticGenerator(time.Now().UnixNano())

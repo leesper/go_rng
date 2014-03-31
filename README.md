@@ -218,10 +218,32 @@ recommended using time.Now().UnixNano() as the seed, for example: lrng
 
 Logistic returns a random number of logistic distribution
 
+Gaussian Distribution
+
+1) struct GaussianGenerator
+
+GaussianGenerator is a random number generator for gaussian
+distribution. The zero value is invalid, use NewGaussianGenerator to
+create a generator
+
+2) func NewGaussianGenerator(seed int64) *GaussianGenerator
+
+NewGaussianGenerator returns a gaussian-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: crng
+:= rng.NewGaussianGenerator(time.Now().UnixNano())
+
+3) func (grng GaussianGenerator) Gaussian(mean, stddev float64) float64
+
+Gaussian returns a random number of gaussian distribution Gauss(mean,
+stddev^2)
+
+4)func (grng GaussianGenerator) StdGaussian() float64
+
+StdGaussian returns a random number of standard gaussian distribution
+
+
 TODO:
 gamma
-
-normal
 
 chi squared
 

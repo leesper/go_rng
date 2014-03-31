@@ -10,7 +10,7 @@ import (
 	"math"
 )
 
-// LogisticGenerator is a random number generator for cauchy distribution.
+// LogisticGenerator is a random number generator for logistic distribution.
 // The zero value is invalid, use NewLogisticGenerator to create a generator
 type LogisticGenerator struct {	
 	uniform		*UniformGenerator
