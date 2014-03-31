@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestParetoGenerator(t *testing.T) {
+	fmt.Println("=====Testing for ParetoGenerator begin=====")
+	prng := rng.NewParetoGenerator(time.Now().UnixNano())
+	fmt.Println("Pareto(2.0): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(prng.Pareto(2.0))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for ParetoGenerator end=====")
+	fmt.Println()
+}
+
 func TestGaussianGenerator(t *testing.T) {
 	fmt.Println("=====Testing for GaussianGenerator begin=====")
 	grng := rng.NewGaussianGenerator(time.Now().UnixNano())
@@ -32,6 +55,7 @@ func TestGaussianGenerator(t *testing.T) {
 	fmt.Println()
 }
 
+/*
 func TestLogisticGenerator(t *testing.T) {
 	fmt.Println("=====Testing for LogisticGenerator begin=====")
 	lrng := rng.NewLogisticGenerator(time.Now().UnixNano())
@@ -77,6 +101,7 @@ func TestCauchyGenerator(t *testing.T) {
 	fmt.Println("=====Testing for CauchyGenerator end=====")
 	fmt.Println()
 }
+*/
 
 func TestExpGenerator(t *testing.T) {
 	fmt.Println("=====Testing for ExpGenerator begin=====")

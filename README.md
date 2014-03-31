@@ -241,6 +241,24 @@ stddev^2)
 
 StdGaussian returns a random number of standard gaussian distribution
 
+Pareto Distribution (type I)
+
+1) struct ParetoGenerator
+
+ParetoGenerator is a random number generator for type I pareto
+distribution. The zero value is invalid, use NewParetoGenerator to
+create a generator
+
+2) func NewParetoGenerator(seed int64) *ParetoGenerator
+
+NewParetoGenerator returns a type I pareto-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: crng
+:= rng.NewParetoGenerator(time.Now().UnixNano())
+
+3) func (prng ParetoGenerator) Pareto(alpha float64) float64
+
+Pareto returns a random number of type I pareto distribution (alpha > 0,0)
+
 
 TODO:
 gamma
