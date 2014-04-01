@@ -9,6 +9,30 @@ import (
 	"strings"
 )
 
+func TestBetaGenerator(t *testing.T) {
+	// FIXME: I have no idea whether it is right :(
+	fmt.Println("=====Testing for BetaGenerator begin=====")
+	brng := rng.NewBetaGenerator(time.Now().UnixNano())
+	fmt.Println("Beta(2.0, 2.0): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(brng.Beta(2.0, 2.0))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for BetaGenerator end=====")
+	fmt.Println()
+}
+
 func TestLognormalGenerator(t *testing.T) {
 	fmt.Println("=====Testing for LognormalGenerator begin=====")
 	lnng := rng.NewLognormalGenerator(time.Now().UnixNano())

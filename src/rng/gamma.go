@@ -15,7 +15,7 @@ type GammaGenerator struct {
 	uniform 	*UniformGenerator
 }
 
-// NewGammaGenerator returns a type I pareto-distribution generator
+// NewGammaGenerator returns a gamma distribution generator
 // it is recommended using time.Now().UnixNano() as the seed, for example:
 // grng := rng.NewGammaGenerator(time.Now().UnixNano())
 func NewGammaGenerator(seed int64) *GammaGenerator {

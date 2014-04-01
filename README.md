@@ -314,13 +314,28 @@ recommended using time.Now().UnixNano() as the seed, for example: crng
 
 Lognormal return a random number of lognormal distribution
 
+Beta Distribution
+
+1) struct BetaGenerator struct 
+
+BetaGenerator is a random number generator for beta distribution. The
+zero value is invalid, use NewBetaGenerator to create a generator
+
+2) func NewBetaGenerator(seed int64) *BetaGenerator
+
+NewBetaGenerator returns a beta distribution generator it is recommended
+using time.Now().UnixNano() as the seed, for example: brng :=
+rng.NewBetaGenerator(time.Now().UnixNano())
+
+3) func (brng BetaGenerator) Beta(alpha, beta float64) float64
+
+Beta returns a random number of beta distribution (alpha > 0.0 and beta > 0.0)
+
 TODO:
 
 chi squared
 
 extreme value
-
-lognormal
 
 fisher f
 
