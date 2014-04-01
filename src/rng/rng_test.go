@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestGammaGenerator(t *testing.T) {
+	fmt.Println("=====Testing for GammaGenerator begin=====")
+	grng := rng.NewGammaGenerator(time.Now().UnixNano())
+	fmt.Println("Gamma(9.0, 0.5): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(grng.Gamma(9.0, 0.5))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for GammaGenerator end=====")
+	fmt.Println()
+}
+
 func TestWeibullGenerator(t *testing.T) {
 	fmt.Println("=====Testing for WeibullGenerator begin=====")
 	wrng := rng.NewWeibullGenerator(time.Now().UnixNano())

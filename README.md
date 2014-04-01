@@ -278,8 +278,25 @@ recommended using time.Now().UnixNano() as the seed, for example: wrng
 Weibull returns a random number of weibull distribution (lambda > 0.0
 and k > 0.0)
 
+Gamma Distribution
+
+1) struct GammaGenerator
+    
+GammaGenerator is a random number generator for gamma distribution. The
+zero value is invalid, use NewGammaGenerator to create a generator
+
+2) func NewGammaGenerator(seed int64) *GammaGenerator
+
+NewGammaGenerator returns a type I pareto-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: grng
+:= rng.NewGammaGenerator(time.Now().UnixNano())
+
+3) func (grng GammaGenerator) Gamma(alpha, beta float64) float64
+
+Gamma returns a random number of gamma distribution (alpha > 0.0 and
+beta > 0.0)
+
 TODO:
-gamma
 
 chi squared
 
