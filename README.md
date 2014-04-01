@@ -331,9 +331,25 @@ rng.NewBetaGenerator(time.Now().UnixNano())
 
 Beta returns a random number of beta distribution (alpha > 0.0 and beta > 0.0)
 
-TODO:
+Chi-Squared Distribution
 
-chi squared
+1) struct ChiSquaredGenerator
+    
+ChiSquaredGenerator is a random number generator for chi-squared
+distribution. The zero value is invalid, use NewChiSquaredGenerator to
+create a generator
+
+2) func NewChiSquaredGenerator(seed int64) *ChiSquaredGenerator
+
+NewChiSquaredGenerator returns a chi-squared distribution generator it
+is recommended using time.Now().UnixNano() as the seed, for example:
+crng := rng.NewChiSquaredGenerator(time.Now().UnixNano())
+
+3) func (crng ChiSquaredGenerator) ChiSquared(freedom int64) float64
+
+ChiSquared returns a random number of chi-squared distribution
+
+TODO:
 
 extreme value
 

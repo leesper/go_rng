@@ -9,6 +9,30 @@ import (
 	"strings"
 )
 
+func TestChiSquaredGenerator(t *testing.T) {
+	fmt.Println("=====Testing for ChiSquaredGenerator begin=====")
+	crng := rng.NewChiSquaredGenerator(time.Now().UnixNano())
+	fmt.Println("ChiSquared(1): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(crng.ChiSquared(1))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for ChiSquaredGenerator end=====")
+	fmt.Println()
+}
+
+/*
 func TestBetaGenerator(t *testing.T) {
 	// FIXME: I have no idea whether it is right :(
 	fmt.Println("=====Testing for BetaGenerator begin=====")
@@ -56,7 +80,6 @@ func TestLognormalGenerator(t *testing.T) {
 	fmt.Println()
 }
 
-/*
 func TestGammaGenerator(t *testing.T) {
 	fmt.Println("=====Testing for GammaGenerator begin=====")
 	grng := rng.NewGammaGenerator(time.Now().UnixNano())
