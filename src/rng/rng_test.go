@@ -9,6 +9,30 @@ import (
 	"strings"
 )
 
+func TestLognormalGenerator(t *testing.T) {
+	fmt.Println("=====Testing for LognormalGenerator begin=====")
+	lnng := rng.NewLognormalGenerator(time.Now().UnixNano())
+	fmt.Println("Lognormal(0.0, 0.5): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(lnng.Lognormal(0.0, 0.5))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for LognormalGenerator end=====")
+	fmt.Println()
+}
+
+/*
 func TestGammaGenerator(t *testing.T) {
 	fmt.Println("=====Testing for GammaGenerator begin=====")
 	grng := rng.NewGammaGenerator(time.Now().UnixNano())
@@ -101,7 +125,6 @@ func TestGaussianGenerator(t *testing.T) {
 	fmt.Println()
 }
 
-/*
 func TestLogisticGenerator(t *testing.T) {
 	fmt.Println("=====Testing for LogisticGenerator begin=====")
 	lrng := rng.NewLogisticGenerator(time.Now().UnixNano())
@@ -147,7 +170,6 @@ func TestCauchyGenerator(t *testing.T) {
 	fmt.Println("=====Testing for CauchyGenerator end=====")
 	fmt.Println()
 }
-*/
 
 func TestExpGenerator(t *testing.T) {
 	fmt.Println("=====Testing for ExpGenerator begin=====")
@@ -315,6 +337,7 @@ func TestUniformGenerator(t *testing.T) {
 		
 	fmt.Println("=====Testing for UniformGenerator end=====")
 }
+*/
 
 
 func SortInt64Slice(slice []int64) {

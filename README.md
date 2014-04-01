@@ -296,6 +296,24 @@ recommended using time.Now().UnixNano() as the seed, for example: grng
 Gamma returns a random number of gamma distribution (alpha > 0.0 and
 beta > 0.0)
 
+Lognormal Distribution
+
+1) struct LognormalGenerator
+
+LognormalGenerator is a random number generator for lognormal
+distribution. The zero value is invalid, use NewLognormalGenerator to
+create a generator
+
+2) func NewLognormalGenerator(seed int64) *LognormalGenerator
+
+NewLognormalGenerator returns a lognormal-distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: crng
+:= rng.NewLognormalGenerator(time.Now().UnixNano())
+
+3) func (lnng LognormalGenerator) Lognormal(mean, stddev float64) float64
+
+Lognormal return a random number of lognormal distribution
+
 TODO:
 
 chi squared
