@@ -1,8 +1,13 @@
-go_rng --- A pseudo-random number generator written in Golang
-=============================================================
+go_rng --- 基于Go语言实现的伪随机数生成器库
+===========================================
+
+A pseudo-random number generator written in Golang
+==================================================
 
 Author: Leesper
 ---------------
+
+[Mail To:](pascal7718@gmail.com)
 
 Inspired by:
 ------------
