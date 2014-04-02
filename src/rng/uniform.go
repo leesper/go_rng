@@ -109,3 +109,23 @@ func (ung UniformGenerator) Float32n(n float32) float32 {
 func (ung UniformGenerator) Float64n(n float64) float64 {
 	return ung.Float64Range(0.0, n)
 }
+
+// Shuffle rearrange the elements of an array in random order
+func (ung UniformGenerator) Shuffle(arr []interface{}) {
+	N := len(arr)
+	for i := range arr {
+		r := int32(i) + ung.Int32n( int32(N - i) )
+		arr[i], arr[r] = arr[r], arr[i]
+	}
+}
+
+// Shuffle rearrange the elements of the subarray[low..high] in random order
+func (ung UniformGenerator) ShuffleRange(arr []interface{}, low, high int) {
+	if low < 0 || low > high || high >= len(arr) {
+		panic(fmt.Sprintf("Illegal subarray range %d ~ %d", low, high))
+	}
+	for i := low; i <= high; i++ {
+		r := int32(i) + ung.Int32n( int32(high - i + 1) )
+		arr[i], arr[r] = arr[r], arr[i]
+	}
+}

@@ -32,6 +32,7 @@ func TestFisherFGenerator(t *testing.T) {
 	fmt.Println()
 }
 
+/*
 func TestStudentTGenerator(t *testing.T) {
 	fmt.Println("=====Testing for StudentTGenerator begin=====")
 	stng := rng.NewStudentTGenerator(time.Now().UnixNano())
@@ -78,7 +79,6 @@ func TestChiSquaredGenerator(t *testing.T) {
 	fmt.Println()
 }
 
-/*
 func TestBetaGenerator(t *testing.T) {
 	// FIXME: I have no idea whether it is right :(
 	fmt.Println("=====Testing for BetaGenerator begin=====")
@@ -376,6 +376,7 @@ func TestBernoulliGenerator(t *testing.T) {
 	fmt.Println("=====Testing for BernoulliGenerator end=====")
 	fmt.Println()
 }
+*/
 
 func TestUniformGenerator(t *testing.T) {
 	urng := rng.NewUniformGenerator(time.Now().UnixNano())
@@ -428,9 +429,29 @@ func TestUniformGenerator(t *testing.T) {
 	fmt.Printf("Random number in [45.485, 999.458): %.2f and %.2f\n", 
 		urng.Float32Range(45.485, 999.458), urng.Float64Range(45.485, 999.458))
 		
+	names := []string{"leesper", "charlie", "jack", "cage", "luck", "rice", "hasting", "dora", "selina"}
+	names1 := make([]interface{}, len(names))
+	names2 := make([]interface{}, len(names))
+	
+	for i, v := range names {
+		names1[i] = interface{}(v)
+		names2[i] = interface{}(v)
+	}
+	
+	fmt.Printf("Original names1: %v\n", names1)
+	for i := 0; i < 5; i++ {
+		urng.Shuffle(names1)
+		fmt.Printf("names1: %v\n", names1)
+	}
+	
+	fmt.Printf("Original names2: %v\n", names2)
+	for i := 0; i < 5; i++ {
+		urng.ShuffleRange(names2, 2, 6)
+		fmt.Printf("names2: %v\n", names2)
+	}
+		
 	fmt.Println("=====Testing for UniformGenerator end=====")
 }
-*/
 
 
 func SortInt64Slice(slice []int64) {

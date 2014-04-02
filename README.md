@@ -86,6 +86,14 @@ Int64Range returns a random uint64 in [a, b)
     
 Int64n returns a random uint64 in [0, n)
 
+15) func (ung UniformGenerator) Shuffle(arr []interface{})
+    
+Shuffle rearrange the elements of an array in random order
+
+16) func (ung UniformGenerator) ShuffleRange(arr []interface{}, low, high int)
+    
+Shuffle rearrange the elements of the subarray[low..high] in random order
+
 Bernoulli Distribution
 
 1) struct BernoulliGenerator
