@@ -367,8 +367,25 @@ recommended using time.Now().UnixNano() as the seed, for example: stng
     
 Student returns a random number of student-t distribution (freedom > 0.0)
 
-TODO:
+Fisher's F Distribution
 
-fisher f
+1) struct FisherFGenerator
+
+FisherFGenerator is a random number generator for Fisher's F
+distribution. The zero value is invalid, use NewFisherFGenerator to
+create a generator
+
+2) func NewFisherFGenerator(seed int64) *FisherFGenerator
+    
+NewFisherFGenerator returns a Fisher's F distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: frng
+:= rng.NewFisherFGenerator(time.Now().UnixNano())
+
+3) func (frng FisherFGenerator) Fisher(d1, d2 int64) float64
+    
+Fisher returns a random number of Fisher's F distribution (d1 > 0 and d2 > 0)
+
+
+TODO:
 
 shuffle
