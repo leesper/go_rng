@@ -32,7 +32,6 @@ func TestFisherFGenerator(t *testing.T) {
 	fmt.Println()
 }
 
-/*
 func TestStudentTGenerator(t *testing.T) {
 	fmt.Println("=====Testing for StudentTGenerator begin=====")
 	stng := rng.NewStudentTGenerator(time.Now().UnixNano())
@@ -376,7 +375,6 @@ func TestBernoulliGenerator(t *testing.T) {
 	fmt.Println("=====Testing for BernoulliGenerator end=====")
 	fmt.Println()
 }
-*/
 
 func TestUniformGenerator(t *testing.T) {
 	urng := rng.NewUniformGenerator(time.Now().UnixNano())
