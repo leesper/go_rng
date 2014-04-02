@@ -42,8 +42,8 @@ Supported Distributions and Functionalities:
 ### Gaussian Distribution
 ### Logistic Distribution
 
-Usage
------
+API Documentation
+-----------------
 
         package rng
         import "rng"
