@@ -22,7 +22,7 @@ func NewChiSquaredGenerator(seed int64) *ChiSquaredGenerator {
 	return &ChiSquaredGenerator{ grng }
 }
 
-// ChiSquared returns a random number of chi-squared distribution
+// ChiSquared returns a random number of chi-squared distribution (freedom > 0)
 func (crng ChiSquaredGenerator) ChiSquared(freedom int64) float64 {
 	if freedom <= 0 {
 		panic(fmt.Sprintf("Invalid parameter freedom: %d (freedom > 0)", freedom))

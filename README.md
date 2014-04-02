@@ -349,14 +349,26 @@ crng := rng.NewChiSquaredGenerator(time.Now().UnixNano())
 
 ChiSquared returns a random number of chi-squared distribution
 
+Student's t-distribution
+
+1) type StudentTGenerator struct {
+   
+StudentTGenerator is a random number generator for student-t
+distribution. The zero value is invalid, use NewStudentTGenerator to
+create a generator
+
+2) func NewStudentTGenerator(seed int64) *StudentTGenerator
+    
+NewStudentTGenerator returns a student-t distribution generator it is
+recommended using time.Now().UnixNano() as the seed, for example: stng
+:= rng.NewStudentTGenerator(time.Now().UnixNano())
+
+3) func (stng StudentTGenerator) Student(freedom int64) float64
+    
+Student returns a random number of student-t distribution (freedom > 0.0)
+
 TODO:
 
-extreme value
-
 fisher f
-
-student t
-
-discrete
 
 shuffle

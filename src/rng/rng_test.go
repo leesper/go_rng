@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+func TestStudentTGenerator(t *testing.T) {
+	fmt.Println("=====Testing for StudentTGenerator begin=====")
+	stng := rng.NewStudentTGenerator(time.Now().UnixNano())
+	fmt.Println("StudentT(5): ")
+	hist := map[int64]int{}
+	for i := 0; i < 10000; i++ {
+		hist[int64(stng.Student(5))]++
+	}
+	
+	keys := []int64{}
+	for k := range hist {
+		keys = append(keys, k)
+	}
+	SortInt64Slice(keys)
+	
+	for _, key := range keys {
+		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key] / 200))
+	}
+	
+	fmt.Println("=====Testing for StudentTGenerator end=====")
+	fmt.Println()
+}
+
 func TestChiSquaredGenerator(t *testing.T) {
 	fmt.Println("=====Testing for ChiSquaredGenerator begin=====")
 	crng := rng.NewChiSquaredGenerator(time.Now().UnixNano())
