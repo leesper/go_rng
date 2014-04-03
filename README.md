@@ -24,24 +24,23 @@ Inspired by:
 
 Supported Distributions and Functionalities:
 -------------------------------------------
-Uniform Distribution <br />
-Bernoulli Distribution <br />
-Chi-Squared Distribution <br />
-Gamma Distribution <br />
-Beta Distribution <br />
-Fisher's F Distribution <br />
-Cauchy Distribution <br />
-Weibull Distribution <br />
-Pareto Distribution <br />
-Log Normal Distribution <br />
-Exponential Distribution <br />
-Student's t-Distribution <br />
-Binomial Distribution <br />
-Bernoulli Distribution <br />
-Poisson Distribution <br />
-Geometric Distribution <br />
-Gaussian Distribution <br />
-Logistic Distribution <br />
+均匀分布      Uniform Distribution <br />
+伯努利分布    Bernoulli Distribution <br />
+卡方分布      Chi-Squared Distribution <br />
+Gamma分布     Gamma Distribution <br />
+Beta分布      Beta Distribution <br />
+费舍尔F分布   Fisher's F Distribution <br />
+柯西分布      Cauchy Distribution <br />
+韦伯分布      Weibull Distribution <br />
+Pareto分布    Pareto Distribution <br />
+对数高斯分布  Log Normal Distribution <br />
+指数分布      Exponential Distribution <br />
+学生T分布     Student's t-Distribution <br />
+二项分布      Binomial Distribution <br />
+泊松分布      Poisson Distribution <br />
+几何分布      Geometric Distribution <br />
+高斯分布      Gaussian Distribution <br />
+逻辑分布      Logistic Distribution <br />
 
 API Documentation
 -----------------
