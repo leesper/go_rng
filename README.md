@@ -3,7 +3,9 @@ go_rng --- 伪随机数生成器库的Go语言实现
 
 ### A pseudo-random number generator written in Golang v1.1
 
-### Author: [Leesper](pascal7718@gmail.com) [Danny Patrie](https://github.com/dpatrie)
+### Author: 
+[Leesper](pascal7718@gmail.com) 
+[Danny Patrie](https://github.com/dpatrie)
 
 Inspired by:
 ------------
