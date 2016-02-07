@@ -9,11 +9,13 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"sync"
 )
 
 // UniformGenerator is a random number generator for uniform distribution.
 // The zero value is invalid, use NewUniformGenerator to create a generator
 type UniformGenerator struct {
+	mu      *sync.Mutex
 	rd	*rand.Rand
 }
 
@@ -21,16 +23,20 @@ type UniformGenerator struct {
 // it is recommended using time.Now().UnixNano() as the seed, for example:
 // urng := rng.NewUniformGenerator(time.Now().UnixNano())
 func NewUniformGenerator(seed int64) *UniformGenerator {
-	return &UniformGenerator{ rand.New(rand.NewSource(seed)) }	
+	return &UniformGenerator{ mu: new(sync.Mutex), rd: rand.New(rand.NewSource(seed)) }	
 }
 
 // Int32 returns a random uint32
 func (ung UniformGenerator) Int32() int32 {
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Int31()
 }
 
 // Int64 returns a random uint64
 func (ung UniformGenerator) Int64() int64 {
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Int63()
 }
 
@@ -39,7 +45,8 @@ func (ung UniformGenerator) Int32n(n int32) int32 {
 	if n <= 0 {
 		panic(fmt.Sprintf("Illegal parameter n: %d", n))
 	}
-
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Int31n(n)
 }
 
@@ -48,7 +55,8 @@ func (ung UniformGenerator) Int64n(n int64) int64 {
 	if n <= 0 {
 		panic(fmt.Sprintf("Illegal parameter n: %d", n))
 	}
-	
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Int63n(n)
 }
 
@@ -76,11 +84,15 @@ func (ung UniformGenerator) Int64Range(a, b int64) int64 {
 
 // Float32 returns a random float32 in [0.0, 1.0) 
 func (ung UniformGenerator) Float32() float32 {
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Float32()
 }
 
 // Float64 returns a random float64 in [0.0, 1.0) 
 func (ung UniformGenerator) Float64() float64 {
+	ung.mu.Lock()
+	defer ung.mu.Unlock()
 	return ung.rd.Float64()
 }
 
