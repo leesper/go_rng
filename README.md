@@ -250,7 +250,7 @@ API Documentation
 ### Weibull Distribution
         
         1) struct WeibullGenerator
-        WeibullGenerator is a random number generator for type weibull
+        WeibullGenerator is a random number generator for weibull
         distribution. The zero value is invalid, use NewWeibullGenerator to
         create a generator
         
@@ -268,7 +268,7 @@ API Documentation
         zero value is invalid, use NewGammaGenerator to create a generator
 
         2) func NewGammaGenerator(seed int64) *GammaGenerator
-        NewGammaGenerator returns a type I pareto-distribution generator it is
+        NewGammaGenerator returns a gamma distribution generator it is
         recommended using time.Now().UnixNano() as the seed, for example: grng
         := rng.NewGammaGenerator(time.Now().UnixNano())
         

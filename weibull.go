@@ -10,7 +10,7 @@ import (
 	"math"
 )
 
-// WeibullGenerator is a random number generator for type weibull distribution.
+// WeibullGenerator is a random number generator for weibull distribution.
 // The zero value is invalid, use NewWeibullGenerator to create a generator
 type WeibullGenerator struct {
 	uniform *UniformGenerator
