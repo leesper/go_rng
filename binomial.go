@@ -32,31 +32,25 @@ func (bing BinomialGenerator) Binomial(n int64, p float64) int64 {
 		panic(fmt.Sprintf("Invalid parameter n: %d", n))
 	}
 
-	workers := 0
-	resChan := make(chan int64)
-	for n > 0 {
-		if n > 1000 {
+	if n > 1000 {
+		workers := 0
+		resChan := make(chan int64)
+		for n > 0 {
 			go func() {
 				res := bing.binomial(1000, p)
 				resChan <- res
 			}()
 			n -= 1000
 			workers++
-		} else {
-			go func() {
-				res := bing.binomial(n, p)
-				resChan <- res
-			}()
-			workers++
-			break
 		}
+		var result int64
+		for i := 0; i < workers; i++ {
+			result += <-resChan
+		}
+		return result
+	} else {
+		return bing.binomial(n, p)
 	}
-
-	var result int64
-	for i := 0; i < workers; i++ {
-		result += <-resChan
-	}
-	return result
 }
 
 func (bing BinomialGenerator) binomial(n int64, p float64) int64 {
