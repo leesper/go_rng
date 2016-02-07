@@ -45,6 +45,7 @@ Pareto分布    Pareto Distribution <br />
 几何分布      Geometric Distribution <br />
 高斯分布      Gaussian Distribution <br />
 逻辑分布      Logistic Distribution <br />
+狄利克雷分布  Dirichlet Distribution <br />
 
 API Documentation
 -----------------
@@ -347,3 +348,25 @@ API Documentation
         
         3) func (frng FisherFGenerator) Fisher(d1, d2 int64) float64
         Fisher returns a random number of Fisher's F distribution (d1 > 0 and d2 > 0)
+
+### Dirichlet Distribution
+
+        1) struct DirichletGenerator
+        DirichletGenerator is a random number generator for dirichlet
+	distribution. The zero value is invalid, use NewDirichletGenerator to
+	create a generator
+        
+        2) func NewDirichletGenerator(seed int64) *DirichletGenerator
+	NewDirichletGenerator returns a dirichlet-distribution generator it is
+	recommended using time.Now().UnixNano() as the seed, for example: drng
+	:= rng.NewDirichletGenerator(time.Now().UnixNano())
+        
+        3) func (drng DirichletGenerator) Dirichlet(alphas []float64) []float64
+	Dirichlet returns random numbers of dirichlet distribution (alpha > 0.0, for alpha in alphas)
+
+        4) func (drng DirichletGenerator) SymmetricDirichlet(alpha float64, n int) []float64
+        SymmetricDirichlet returns random numbers of symmetric-dirichlet distribution (alpha > 0.0 and n > 0)
+
+        5) func (drng DirichletGenerator) FlatDirichlet(n int) []float64
+        FlatDirichlet returns random numbers of flat-dirichlet distribution (n > 0)
+        

@@ -2,11 +2,42 @@ package rng
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 	"testing"
 	"time"
 )
+
+func TestDirichletGenerator(t *testing.T) {
+	fmt.Println("=====Testing for DirichletGenerator begin=====")
+	epsilon := 0.001
+	drng := NewDirichletGenerator(time.Now().UnixNano())
+	fmt.Print("Dirichlet({1.0, 42.42, 244.24}): ")
+	alphas := [...]float64{1.0, 42.42, 244.24}
+	values := drng.Dirichlet(alphas[:])
+	sum := SumFloat64Slice(values)
+	fmt.Printf("Sum: %f\n", sum)
+	if math.Abs(1.0-sum) > epsilon {
+		t.Fatalf("Bad sum: %f", sum)
+	}
+	fmt.Print("SymmetricDirichlet(42, 4242): ")
+	values = drng.SymmetricDirichlet(42, 4242)
+	sum = SumFloat64Slice(values)
+	fmt.Printf("Sum: %f\n", sum)
+	if math.Abs(1.0-sum) > epsilon {
+		t.Fatalf("Bad sum: %f", sum)
+	}
+	fmt.Print("FlatDirichlet(8): ")
+	values = drng.FlatDirichlet(8)
+	sum = SumFloat64Slice(values)
+	fmt.Printf("Sum: %f (values: %v)\n", sum, values)
+	if math.Abs(1.0-sum) > epsilon {
+		t.Fatalf("Bad sum: %f", sum)
+	}
+	fmt.Println("=====Testing for DirichletGenerator end=====")
+	fmt.Println()
+}
 
 func TestFisherFGenerator(t *testing.T) {
 	fmt.Println("=====Testing for FisherFGenerator begin=====")
@@ -466,4 +497,12 @@ func (slice int64slice) Less(i, j int) bool {
 
 func (slice int64slice) Swap(i, j int) {
 	slice[i], slice[j] = slice[j], slice[i]
+}
+
+func SumFloat64Slice(slice []float64) float64 {
+	sum := 0.0
+	for _, value := range slice {
+		sum += value
+	}
+	return sum
 }
