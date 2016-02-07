@@ -1,6 +1,8 @@
 go_rng --- 伪随机数生成器库的Go语言实现
 =======================================
 
+[![Build Status](https://travis-ci.org/leesper/go_rng.svg?branch=master)](https://travis-ci.org/leesper/go_rng)
+
 ### A pseudo-random number generator written in Golang v1.1
 
 ### Author: 
