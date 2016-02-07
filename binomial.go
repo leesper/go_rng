@@ -1,4 +1,4 @@
-// Package rng implements a series of pseudo-random number generator 
+// Package rng implements a series of pseudo-random number generator
 // based on a variety of common probability distributions
 // Author: Leesper
 // Email: pascal7718@gmail.com 394683518@qq.com
@@ -12,7 +12,7 @@ import (
 // BinomialGenerator is a random number generator for binomial distribution.
 // The zero value is invalid, use NewBinomialGenerator to create a generator
 type BinomialGenerator struct {
-	uniform		*UniformGenerator
+	uniform *UniformGenerator
 }
 
 // NewBinomialGenerator returns a binomial-distribution generator
@@ -20,7 +20,7 @@ type BinomialGenerator struct {
 // bing := rng.NewBinomialGenerator(time.Now().UnixNano())
 func NewBinomialGenerator(seed int64) *BinomialGenerator {
 	urng := NewUniformGenerator(seed)
-	return &BinomialGenerator{ urng }
+	return &BinomialGenerator{urng}
 }
 
 // Binomial returns a random number X ~ binomial(n, p)
@@ -31,7 +31,7 @@ func (bing BinomialGenerator) Binomial(n int64, p float64) int64 {
 	if n <= 0 {
 		panic(fmt.Sprintf("Invalid parameter n: ", n))
 	}
-	
+
 	workers := 0
 	resChan := make(chan int64)
 	for n > 0 {
@@ -51,10 +51,10 @@ func (bing BinomialGenerator) Binomial(n int64, p float64) int64 {
 			break
 		}
 	}
-	
+
 	var result int64
 	for i := 0; i < workers; i++ {
-		result += <-resChan	
+		result += <-resChan
 	}
 	return result
 }

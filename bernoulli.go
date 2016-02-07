@@ -1,4 +1,4 @@
-// Package rng implements a series of pseudo-random number generator 
+// Package rng implements a series of pseudo-random number generator
 // based on a variety of common probability distributions
 // Author: Leesper
 // Email: pascal7718@gmail.com 394683518@qq.com
@@ -12,7 +12,7 @@ import (
 // UniformGenerator is a random number generator for uniform distribution.
 // The zero value is invalid, use NewBernoulliGenerator to create a generator
 type BernoulliGenerator struct {
-	uniform		*UniformGenerator
+	uniform *UniformGenerator
 }
 
 // NewBernoulliGenerator returns a bernoulli-distribution generator
@@ -20,7 +20,7 @@ type BernoulliGenerator struct {
 // beng := rng.NewBernoulliGenerator(time.Now().UnixNano())
 func NewBernoulliGenerator(seed int64) *BernoulliGenerator {
 	urng := NewUniformGenerator(seed)
-	return &BernoulliGenerator{ urng }
+	return &BernoulliGenerator{urng}
 }
 
 // Bernoulli returns a bool, which is true with probablity 0.5
