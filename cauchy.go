@@ -27,7 +27,7 @@ func NewCauchyGenerator(seed int64) *CauchyGenerator {
 // Cauchy returns a random number of cauchy distribution
 func (crng CauchyGenerator) Cauchy(x0, gamma float64) float64 {
 	if !(gamma > 0.0) {
-		panic(fmt.Sprintf("Invalid parameter gamma: .2f", gamma))
+		panic(fmt.Sprintf("Invalid parameter gamma: %.2f", gamma))
 	}
 	return crng.cauchy(x0, gamma)
 }

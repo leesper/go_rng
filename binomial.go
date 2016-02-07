@@ -26,10 +26,10 @@ func NewBinomialGenerator(seed int64) *BinomialGenerator {
 // Binomial returns a random number X ~ binomial(n, p)
 func (bing BinomialGenerator) Binomial(n int64, p float64) int64 {
 	if !(0.0 <= p && p <= 1.0) {
-		panic(fmt.Sprintf("Invalid probability p: ", p))
+		panic(fmt.Sprintf("Invalid probability p: %f", p))
 	}
 	if n <= 0 {
-		panic(fmt.Sprintf("Invalid parameter n: ", n))
+		panic(fmt.Sprintf("Invalid parameter n: %d", n))
 	}
 
 	workers := 0

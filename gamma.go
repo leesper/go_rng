@@ -86,5 +86,4 @@ func (grng GammaGenerator) gamma(alpha, beta float64) float64 {
 		}
 		return x * beta
 	}
-	panic("This place cannot be reached")
 }
