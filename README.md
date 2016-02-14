@@ -8,6 +8,7 @@ go_rng --- 伪随机数生成器库的Go语言实现
 ### Author: 
 1.[Leesper](pascal7718@gmail.com) 
 2.[Danny Patrie](https://github.com/dpatrie)
+3.[Akihiro Suda](https://github.com/AkihiroSuda)
 
 Inspired by:
 ------------
