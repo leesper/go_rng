@@ -1,0 +1,9 @@
+language: go
+
+go:
+  - 1.5
+
+before_script:
+  - go vet ./...
+
+gobuild_args: -v -race
