@@ -296,7 +296,7 @@ func TestCauchyGenerator(t *testing.T) {
 func TestExpGenerator(t *testing.T) {
 	fmt.Println("=====Testing for ExpGenerator begin=====")
 	erng := NewExpGenerator(time.Now().UnixNano())
-	fmt.Println("Possion(1): ")
+	fmt.Println("Poisson(1): ")
 	hist := map[int64]int{}
 	for i := 0; i < 10000; i++ {
 		hist[int64(erng.Exp(1)*2)]++
@@ -318,12 +318,12 @@ func TestExpGenerator(t *testing.T) {
 }
 
 func TestPoissonGenerator(t *testing.T) {
-	fmt.Println("=====Testing for PossionGenerator begin=====")
+	fmt.Println("=====Testing for PoissonGenerator begin=====")
 	prng := NewPoissonGenerator(time.Now().UnixNano())
-	fmt.Println("Possion(4): ")
+	fmt.Println("Poisson(4): ")
 	hist := map[int64]int{}
 	for i := 0; i < 10000; i++ {
-		hist[prng.Possion(4)]++
+		hist[prng.Poisson(4)]++
 	}
 
 	keys := []int64{}
@@ -336,7 +336,7 @@ func TestPoissonGenerator(t *testing.T) {
 		fmt.Printf("%d:\t%s\n", key, strings.Repeat("*", hist[key]/100))
 	}
 
-	fmt.Println("=====Testing for PossionGenerator end=====")
+	fmt.Println("=====Testing for PoissonGenerator end=====")
 	fmt.Println()
 }
 
