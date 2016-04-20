@@ -26,7 +26,7 @@ func NewPoissonGenerator(seed int64) *PoissonGenerator {
 }
 
 // Poisson returns a random number of possion distribution
-func (prng PoissonGenerator) Possion(lambda float64) int64 {
+func (prng PoissonGenerator) Poisson(lambda float64) int64 {
 	if !(lambda > 0.0) {
 		panic(fmt.Sprintf("Invalid lambda: %.2f", lambda))
 	}
