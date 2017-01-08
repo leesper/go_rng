@@ -8,7 +8,6 @@ package rng
 import (
 	"fmt"
 	"math"
-	"time"
 )
 
 // PoissonGenerator is a random number generator for possion distribution.
@@ -21,7 +20,7 @@ type PoissonGenerator struct {
 // it is recommended using time.Now().UnixNano() as the seed, for example:
 // prng := rng.NewPoissonGenerator(time.Now().UnixNano())
 func NewPoissonGenerator(seed int64) *PoissonGenerator {
-	urng := NewUniformGenerator(time.Now().UnixNano())
+	urng := NewUniformGenerator(seed)
 	return &PoissonGenerator{urng}
 }
 
