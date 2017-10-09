@@ -45,7 +45,7 @@ Pareto分布    Pareto Distribution <br />
 
 ## Installation
 
-`go get -u -v github.com/leepser/go_rng`
+`go get -u -v github.com/leesper/go_rng`
 
 ## Usage
 
