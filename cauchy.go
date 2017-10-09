@@ -1,8 +1,3 @@
-// Package rng implements a series of pseudo-random number generator
-// based on a variety of common probability distributions
-// Author: Leesper
-// Email: pascal7718@gmail.com 394683518@qq.com
-
 package rng
 
 import (
