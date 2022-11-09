@@ -21,7 +21,7 @@ func NewGammaGenerator(seed int64) *GammaGenerator {
 
 // Gamma returns a random number of gamma distribution (alpha > 0.0 and beta > 0.0)
 func (grng GammaGenerator) Gamma(alpha, beta float64) float64 {
-	if !(alpha > 0.0) || !(beta > 0.0) {
+	if !(alpha > 0.0) || !(beta > 0.0) || alpha > math.MaxFloat64/2 {
 		panic(fmt.Sprintf("Invalid parameter alpha %.2f beta %.2f", alpha, beta))
 	}
 
